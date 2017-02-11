@@ -1,0 +1,99 @@
+PROJET THREADING PU : Alignement structurale d'une séquence protéique sur une structure protéique 3D.
+Version 1.0
+Compatible Python version 2.7.12
+Last Update : 03/01/2017
+
+
+#Prérequis :
+
+*Décompressez le fichier .tar.gz :
+Le dossier doit contenir les fichiers suivants:
+	Script_Threading_PU.py
+	Dope_potentials.txt
+	README
+
+*Installer Python version 2.7.12:
+	sudo apt install python
+
+*Mettre à jour pip:
+	sudo pip install --upgrade pip
+
+*Installer les packages Python nécessaires:
+	argparse
+	re
+	numpy
+	matplotlib
+	mpl_toolkits
+	
+Pour les packages déjà installés, dans le terminal lancez la commande : 
+	sudo pip install --upgrade <Nom_Package>
+
+Pour les packages non installés, dans le terminal lancez la commande :  
+	sudo pip install <Nom_Package>
+
+
+#Description du Projet :
+Le Projet THREADING PU a pour but d'aligner une séquence protéique sur une structure 3D protéique. La séquence est contenue dans un fichier de type .FASTA et la structure 3D dans un fichier de type .PDB. Ce programme permet donc de prédire quelle sera la structure 3D d'une séquence protéique en se basant sur des structures 3d de protéines proches de celle étudiée. les résultats de l'alignement structurale sont disponibles dans un fichier de sortie qui devra être précisé en argument au lancement du programme. Une fenêtre de visualisation 3D permettra également de voir le résultat de l'alignement structurale en rendu 3D. 
+
+
+#Description des Packages et Modules Python Utilisés :
+
+*matplotlib : Package utilisé pour la modélisation mathématique.
+	figure : Ce module de matplotlib permet la création de figure.
+	pyplot : Ce module de matplotlib permet la création de graphe.
+
+*numpy : Package utilisé pour l'algèbre, nottament pour la création et la gestion de matrices ou d'arrays.
+
+*mpl_toolkits : Package contenant des fonctions spéciales. C'est une extension de matplotlib.
+	mplot3d : Ce module de mpl_toolkits contient des fonctions pour faire des graphes 3D.
+
+Pour plus de précisions sur le fonctionnement du programme, le script Script_Threading_PU.py est commenté. 
+
+
+#Copyrights : "Copyleft"
+
+
+#Lancer le Programme:
+
+*Démarrer le terminal.
+
+*Dans le terminal changer le répertoire de travail pour celui dans lequel se trouvent les scripts du programme (commande cd).
+
+*Une fois le dossier du programmme défini comme repertoire de travail lire l'aide associée à l'utilisation du script Script_Threading_PU.py : 
+	python Script_Threading_PU.py -h
+
+*L'aide devrait s'afficher comme ceci:
+	usage: Script_Threading_PU.py [-h] [-g GAP_SCORE]
+		                      FASTA_File PDB_File DOPE_File Output_File
+
+	positional arguments:
+	  FASTA_File            Path to Protein Sequence.
+	  PDB_File              Path to 3D template.
+	  DOPE_File             Path to potential energies associated to
+		                distancesbetween atoms of amino acid.
+	  Output_File           Name of the output file
+
+	optional arguments:
+	  -h, --help            show this help message and exit
+	  -g GAP_SCORE, --gap_score GAP_SCORE
+		                Value to apply a gap score for the alignment (has to
+		                be an integer or a float > 0)
+
+*Passer en arguments au programme un fichier .FASTA, un fichier .PDB et le fichier Dope_potentials.txt dans cet ordre :
+	python Script_Threading_PU.py fichier.fasta fichier.pdb Dope_potentials.txt
+	
+ATTENTION : le programme prend beaucoup de temps pour produire les résultats, privilégiez des séquences fasta courtes (<= 30 AA) et des petites structures pdb (<= 30 AA). Cette version n'offre pas encore d'option pour le multi-threading.
+
+*Vous pouvez également préciser une valeur associée au gap pour l'alignementavec l'option -g . 
+Cette valeur doit être un nombre entier ou un nombre décimal > 0. Exemples :
+	python Script_Threading_PU.py fichier.fasta fichier.pdb Dope_potentials.txt -g 2
+	python Script_Threading_PU.py fichier.fasta fichier.pdb Dope_potentials.txt -g 0.5
+
+*Appuyer sur Entrer. Le programme devrait démarrer.
+	
+
+#Auteur : Yoann PAGEAUD - Université Paris Diderot - Paris 7
+
+
+#Soumettre un Bug :
+Par E-mail : yoann.pageaud@gmail.com
